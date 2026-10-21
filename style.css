@@ -1,0 +1,56 @@
+/* Center everything */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    height: 100vh; /* Full screen height */
+    background: #f8f8f8;
+}
+
+/* Welcome heading */
+.hero h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+.hero p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+
+/* Attractive red button */
+.book-btn {
+    background: linear-gradient(135deg, #ff4d4d, #d60000);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+
+    box-shadow: 0 6px 15px rgba(214, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.book-btn:hover {
+    background: linear-gradient(135deg, #d60000, #ff1a1a);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(214, 0, 0, 0.5);
+}
+
+.book-btn:active {
+    transform: scale(0.98);
+}

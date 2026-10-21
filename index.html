@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nimo Graphics premium appointments</title>
+  <!-- favicon (inline SVG, no external file) -->
+  <link rel="icon" href="22.png">
+  <style>
+    /* ---------- RESET / BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5f2ed;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1e2b2b;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- TYPOGRAPHY ---------- */
+    h1, h2, h3 {
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      line-height: 1.2;
+      color: #1a2e2e;
+      max-width: 800px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.25rem;
+      color: #1e3b3b;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #2e3f3f;
+      max-width: 680px;
+    }
+
+    /* ---------- LAYOUT / CONTAINERS ---------- */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header */
+    .site-header {
+      background-color: #1e3b3b;
+      color: #f0ede5;
+      padding: 1rem 0;
+      border-bottom: 1px solid #2d4a4a;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo a {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #f0ede5;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: #c7b28b;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #e2ddd2;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.15s;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      border-bottom-color: #c7b28b;
+    }
+
+    /* main content */
+    .main-content {
+      padding: 3.5rem 0 4rem;
+    }
+
+    /* hero section – specific, no vague wording */
+    .hero {
+      margin-bottom: 3.5rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.25rem;
+      color: #3b5555;
+      max-width: 650px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-address {
+      font-size: 0.95rem;
+      color: #5c6e6e;
+      border-left: 3px solid #c7b28b;
+      padding-left: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    /* divider */
+    .divider {
+      height: 1px;
+      background: #ddd8cf;
+      margin: 2.5rem 0;
+    }
+
+    /* two column layout: booking form + info */
+    .booking-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    /* booking form */
+    .booking-form {
+      background: #ffffff;
+      padding: 2rem 2rem 2.2rem;
+      border: 1px solid #e5dfd5;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .booking-form h2 {
+      margin-bottom: 1.75rem;
+      font-size: 1.6rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #3b5555;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: #faf9f7;
+      border: 1px solid #d4cec2;
+      color: #1e2b2b;
+      transition: border 0.15s, background 0.15s;
+      border-radius: 0; /* no pill shapes */
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #1e3b3b;
+      background: #ffffff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* two smaller fields side by side */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* button – rectangular, no pill */
+    .btn {
+      display: inline-block;
+      background: #1e3b3b;
+      color: #f0ede5;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.9rem 2rem;
+      border: 1px solid #1e3b3b;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      font-family: inherit;
+      letter-spacing: 0.01em;
+      border-radius: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #2d4a4a;
+      border-color: #2d4a4a;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #1e3b3b;
+      border: 1px solid #b8ae9c;
+    }
+
+    .btn-secondary:hover {
+      background: #ebe7df;
+      border-color: #9a8e7a;
+    }
+
+    /* info panel (right side) */
+    .info-panel h3 {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .info-panel h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .info-panel p {
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+    }
+
+    .info-panel ul {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .info-panel li {
+      font-size: 0.95rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #e5dfd5;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .info-panel li strong {
+      min-width: 90px;
+      font-weight: 500;
+      color: #1e3b3b;
+    }
+
+    .telegram-note {
+      background: #eae6de;
+      padding: 1.2rem 1.5rem;
+      margin-top: 1.8rem;
+      border-left: 4px solid #1e3b3b;
+      font-size: 0.95rem;
+    }
+
+    .telegram-note strong {
+      font-weight: 600;
+      color: #1e3b3b;
+    }
+
+    /* ---------- MODAL (matches color scheme) ---------- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(30, 59, 59, 0.6); /* dark teal with opacity */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+
+    .modal-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      max-width: 480px;
+      width: 90%;
+      padding: 2.5rem 2rem 2rem;
+      border: 1px solid #ddd8cf;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      transform: translateY(8px);
+      transition: transform 0.2s;
+      border-top: 4px solid #1e3b3b;
+      border-radius: 0;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-content h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #1e3b3b;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .modal-content p {
+      font-size: 1rem;
+      color: #2e3f3f;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+      max-width: 100%;
+    }
+
+    .modal-content .modal-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+
+    .modal-content .btn {
+      width: auto;
+      padding: 0.7rem 1.8rem;
+      font-size: 0.9rem;
+    }
+
+    /* error variant (same structure, different accent) */
+    .modal-content.error {
+      border-top-color: #a1463d;
+    }
+
+    .modal-content.error h3 {
+      color: #a1463d;
+    }
+
+    /* footer / t&C links */
+    .site-footer {
+      background: #1e3b3b;
+      color: #cfc9bd;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: #e2ddd2;
+      text-decoration: none;
+      border-bottom: 1px solid #4e6b6b;
+      padding-bottom: 1px;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+      border-bottom-color: #c7b28b;
+    }
+
+    .footer-copy {
+      color: #9b968b;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      border-top: 1px solid #2d4a4a;
+      padding-top: 1.5rem;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 850px) {
+      .booking-section {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+
+      .main-content {
+        padding: 2rem 0 2.5rem;
+      }
+
+      .booking-form {
+        padding: 1.5rem;
+      }
+
+      .footer-links {
+        gap: 1.25rem;
+        flex-direction: column;
+      }
+
+      .modal-content {
+        padding: 1.75rem 1.5rem 1.5rem;
+      }
+
+      .modal-content .modal-actions {
+        flex-direction: column-reverse;
+      }
+
+      .modal-content .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <a href="/">Nimo <span>Graphics</span></a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#booking">Let's Get Started</a></li>
+          <li><a href="#info">Prices</a></li>
+          <li><a href="https://www.instagram.com/nimo_graphics_?obrf=MThmbnUwaDh4eGNreg%3D%3D&utm_source=qr">Portfolio</a></li>
+          <li><a href="/privacy.html">Reviews</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+
+      <!-- HERO -->
+      <section class="hero">
+        <h1>Bring Your Ideas to Life With Us !</h1>
+        <p class="subhead">Nimo Graphics is a creative design fraternity with expertise in designing flyers, banners, logos, stunning visuals, and other artworks. We offer a unique collection of graphics design services to showcase your identity and bring your ideas to reality. And we design for all industries.</p>
+        <div class="hero-address">
+          <p>Contact us: <a href="nyiyomnimo@gmail.com">nyiyomnimo@gmail.com</a></p>
+        </div>
+      </section>
+
+      <!-- BOOKING + INFO -->
+      <section class="booking-section" id="booking">
+        <!-- booking form -->
+        <div class="booking-form">
+          <h2>Premium Project Design Enquiry</h2>
+          <form id="bookingForm" action="#" method="post">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="checkin">Start Date</label>
+                <input type="date" id="checkin" name="checkin" required>
+              </div>
+              <div class="form-group">
+                <label for="checkout">End Date</label>
+                <input type="date" id="checkout" name="checkout" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="serviceType">Service Type</label>
+                <select id="serviceType" name="serviceType" required>
+                  <option value="1">Flyer Design</option>
+                  <option value="2" selected>Banner Design</option>
+                  <option value="3">Logo Design</option>
+                  <option value="4">Others</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="children">Budget Range</label>
+                <select id="children" name="children">
+                  <option value="0" selected>5$ - 10$</option>
+                  <option value="1">10$ - 20$</option>
+                  <option value="2">20$ - 50$</option>
+                  <option value="3">Others</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" placeholder="e.g. Atassa!!" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="maythelordblessyou@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone (optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="+211 980 766 519">
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Special requests</label>
+              <textarea id="notes" name="notes" placeholder="Describe more about your project..."></textarea>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">Send to start project</button>
+            <p style="font-size: 0.8rem; margin-top: 1rem; color: #5f6b6b;">
+              Your request will be sent via Telegram. We reply within 2 hours (8:00–20:00 GMT).
+            </p>
+          </form>
+        </div>
+
+        <!-- info panel -->
+        <div class="info-panel" id="info">
+          <h3>Rates & designs</h3>
+          <ul>
+            <li><strong>flyers</strong> $5 – $10</li>
+            <li><strong>Logo Design</strong> $10 – $20</li>
+            <li><strong>Audio poster</strong> $5 – $10</li>
+            <li><strong>Visual advertising</strong> $10</li>
+          </ul>
+          <p style="margin-top: 1rem; font-size: 0.92rem; color: #4d6161;">All rates include design revisions. No hidden fees.</p>
+
+          <h3>Design terms</h3>
+          <li>
+            <ul>
+              <li>A 50% deposit is required to commence work, with the remaining 50% due upon approval of the final concept before files are released.</li>
+              <li>Full copyright transfers only after final payment. Before that, Nimo Graphics owns all the work.</li>
+              <li>Requirements: “Client must download files within 90 days; re-delivery fee applies after..”</li>
+            </ul>
+          </li>
+          <div class="telegram-note">
+            <strong>Booking via Telegram:</strong> This form connects to our front desk Telegram. You'll receive a confirmation message after we verify availability. No payment is taken online.
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- T&C LINKS -->
+      <section style="margin: 2rem 0 1rem;">
+        <p style="font-size: 0.95rem;">
+          <a href="/terms.html" style="color: #1e3b3b; text-decoration: underline; text-underline-offset: 3px;">Our Services</a> 
+          &nbsp;·&nbsp; 
+          <a href="/privacy.html" style="color: #1e3b3b; text-decoration: underline; text-underline-offset: 3px;">WhatsApp</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="/terms.html">Home</a>
+        <a href="/privacy.html">Portfolio</a>
+        <a href="#booking">Prices</a>
+        <a href="#info">Reviews</a>
+      </div>
+      <div class="footer-copy">
+        South Sudan · Juba, Gorei South, Roadside · +211 980 766 519<br>
+        © 2026 Nimo Graphics. All rights reserved. 
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL (hidden by default, shown via JS) -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content" id="modalContent">
+      <h3 id="modalTitle">Request sent</h3>
+      <p id="modalMessage">Thank you. Your project request has been sent. We will reply within 2 hours.</p>
+      <div class="modal-actions">
+        <button class="btn" id="modalCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TELEGRAM BOOKING LOGIC -->
+  <script>
+    (function() {
+      // CONFIGURE: replace with your actual bot token and chat ID
+      const TELEGRAM_BOT_TOKEN = '8636570483:AAGClVi9a3W1GPIg4NEoP83tfk0NOjtUuuE';
+      const TELEGRAM_CHAT_ID = '5195230053';
+
+      const form = document.getElementById('bookingForm');
+      const submitBtn = document.getElementById('submitBtn');
+
+      // modal elements
+      const modalOverlay = document.getElementById('modalOverlay');
+      const modalContent = document.getElementById('modalContent');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalMessage = document.getElementById('modalMessage');
+      const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+      // date constraints
+      const checkinInput = document.getElementById('checkin');
+      const checkoutInput = document.getElementById('checkout');
+      const today = new Date().toISOString().split('T')[0];
+      checkinInput.min = today;
+      checkoutInput.min = today;
+
+      checkinInput.addEventListener('change', function() {
+        if (this.value) {
+          checkoutInput.min = this.value;
+        }
+      });
+
+      // ---------- MODAL HELPERS ----------
+      function showModal(title, message, isError) {
+        modalTitle.textContent = title;
+        modalMessage.textContent = message;
+        if (isError) {
+          modalContent.classList.add('error');
+        } else {
+          modalContent.classList.remove('error');
+        }
+        modalOverlay.classList.add('active');
+      }
+
+      function hideModal() {
+        modalOverlay.classList.remove('active');
+      }
+
+      // close modal on button click
+      modalCloseBtn.addEventListener('click', hideModal);
+
+      // close modal on overlay click (outside content)
+      modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+          hideModal();
+        }
+      });
+
+      // close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+          hideModal();
+        }
+      });
+
+      // ---------- FORM SUBMISSION ----------
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // gather data
+        const checkin = document.getElementById('checkin').value;
+        const checkout = document.getElementById('checkout').value;
+        const adults = document.getElementById('adults').value;
+        const children = document.getElementById('children').value;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim() || '—';
+        const notes = document.getElementById('notes').value.trim() || '—';
+
+        // basic validation
+        if (!checkin || !checkout || !name || !email) {
+          showModal('Missing information', 'Please fill in all required fields: check-in, check-out, name, and email.', true);
+          return;
+        }
+
+        if (new Date(checkout) <= new Date(checkin)) {
+          showModal('Date error', 'Check-out date must be after check-in date.', true);
+          return;
+        }
+
+        // build message (plain text, no emoji)
+        const message = 
+          '*New booking request*%0A' +
+          '------------------------%0A' +
+          'Check-in: ' + encodeURIComponent(checkin) + '%0A' +
+          'Check-out: ' + encodeURIComponent(checkout) + '%0A' +
+          'Adults: ' + encodeURIComponent(adults) + '%0A' +
+          'Children: ' + encodeURIComponent(children) + '%0A' +
+          'Name: ' + encodeURIComponent(name) + '%0A' +
+          'Email: ' + encodeURIComponent(email) + '%0A' +
+          'Phone: ' + encodeURIComponent(phone) + '%0A' +
+          'Notes: ' + encodeURIComponent(notes) + '%0A' +
+          '------------------------%0A' +
+          'Sent from Stonewell Inn booking form';
+
+        // disable button briefly
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending request…';
+
+        // Telegram API call
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${message}&parse_mode=Markdown`;
+
+        fetch(url, { method: 'GET' })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Telegram API responded with error');
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (data.ok) {
+              showModal(
+                'Request sent',
+                'Thank you, ' + name + '. Your booking request has been sent. We will reply to ' + email + ' within 2 hours.',
+                false
+              );
+              form.reset();
+            } else {
+              showModal(
+                'Something went wrong',
+                'Please try again or call us on +44 (0)1326 555 123.',
+                true
+              );
+            }
+          })
+          .catch(error => {
+            console.error('Telegram error:', error);
+            showModal(
+              'Connection error',
+              'Could not send your request. Please check your connection or call +44 (0)1326 555 123.',
+              true
+            );
+          })
+          .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send booking request';
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
